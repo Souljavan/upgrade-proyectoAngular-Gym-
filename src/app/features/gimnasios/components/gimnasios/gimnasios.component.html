@@ -1,0 +1,19 @@
+<div class="contentcards">
+<mat-card class="cards" *ngFor="let gimnasio of ginmasiosList;">
+    <mat-card-header>
+      <mat-card-title>{{gimnasio.nombre}}</mat-card-title>
+      <mat-card-subtitle>{{gimnasio.localidad}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image class="card-image" src="{{gimnasio.imagen}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{gimnasio.direccion}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['detail']" [queryParams]="{id: gimnasio._id}">>Ver mas Detalles</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+  
