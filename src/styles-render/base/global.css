@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 110%;
+  white-space: normal;
+}
+
+a:hover, a:active {
+  color: lightgray;
+}
+
+div {
+  overflow: inherit;
+}
+/*# sourceMappingURL=global.css.map */

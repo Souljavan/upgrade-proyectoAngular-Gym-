@@ -13,6 +13,10 @@ const routes: Routes = [
       import('./features/singup/singup.module').then(m => m.SingupModule)
   },
   {
+    path: `gimnasios`, loadChildren: () =>
+      import('./features/gimnasios/gimnasios.module').then(m => m.GimnasiosModule),canActivate: [AuthGuard]
+  },
+  {
     path: `log-in`, loadChildren: () =>
       import('./features/signin/signin.module').then(m => m.SigninModule)
   },

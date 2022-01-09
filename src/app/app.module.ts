@@ -13,6 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import {MatMenuModule} from '@angular/material/menu';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    NgbModule,
+    MatSidenavModule,
+    FlexLayoutModule
 
     
   ],
