@@ -1,18 +1,30 @@
-<div>
-    <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
-        <h3>Please sign up</h3>
-        <div>
+<div class="container-form">
+    <div class="form-container">
+    <form novalidate [formGroup]="signupForm" (ngSubmit)="registerUser()" class="form">
+        <div fxLayout="row" fxLayoutAlign="start center">
             <label>Name</label>
             <input type="text" class="form-control" formControlName="name" placeholder="Enter name" required>
+            <div class="mensajes" *ngIf="!signupForm.get('name')?.valid &&(signupForm.get('name')?.dirty || submitted)">
+      <p>Debe contener entre 3 y 20 caracteres y solo caracteres validos</p>
+    </div>
         </div>
-        <div>
-            <label>Email address</label>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <label>Email</label>
             <input type="email" class="form-control" formControlName="email" placeholder="Enter email" required>
         </div>
-        <div>
+        <div fxLayout="row" fxLayoutAlign="center center">
             <label>Password</label>
             <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
         </div>
-        <button type="submit">Sign up</button>
+        <button type="submit" *ngIf="success==false" >Sign up</button>
     </form>
+</div>
+
+</div>
+
+<div *ngIf="success==true">
+<div class="usuariocreado">
+El usuario ha sido creado con exito. Ahora debes logearte para acceder
+ </div>
+<button type="submit" routerLink="/log-in" class="submit">Log-In</button>
 </div>

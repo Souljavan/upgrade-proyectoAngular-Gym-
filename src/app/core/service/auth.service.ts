@@ -26,6 +26,7 @@ export class AuthService {
 
 // Sign-up
 signUp(user: User): Observable<any> {
+  console.log("Signup")
   let api = `${this.endpoint}/api/register-user`;
   return this.http.post(api, user)
     .pipe(
@@ -35,6 +36,7 @@ signUp(user: User): Observable<any> {
 
 // Sign-in
 signIn(user: User) {
+  console.log("Signin")
   return this.http.post<any>(`${this.endpoint}/api/signin`, user)
     .subscribe((res: any) => {
       localStorage.setItem('access_token', res.token)
@@ -49,10 +51,12 @@ signIn(user: User) {
 }
 
 getToken() {
+  console.log("GetToken")
   return localStorage.getItem('access_token');
 }
 //
 get isLoggedIn(): boolean {
+  console.log("Islogged")
   let authToken = localStorage.getItem('access_token');
   return (authToken !== null) ? true : false;
 }
@@ -66,6 +70,7 @@ doLogout() {
 
 // User profile
 getUserProfile(id: any): Observable<any> {
+  console.log("Userprofile")
   let api = `${this.endpoint}/api/user-profile/${id}`;
   return this.http.get(api, { headers: this.headers }).pipe(
     map((res: any) => {
@@ -77,6 +82,7 @@ getUserProfile(id: any): Observable<any> {
 
 // Error 
 handleError(error: HttpErrorResponse) {
+  console.log("HandleError")
   let msg = '';
   if (error.error instanceof ErrorEvent) {
     // client-side error

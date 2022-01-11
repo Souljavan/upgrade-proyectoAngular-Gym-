@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup,Validators } from "@angular/forms";
 import { AuthService } from '../../../../core/service/auth.service';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
+  success:boolean =false;
+  public submitted: boolean = false;
 
   constructor(
     public fb: FormBuilder,
@@ -18,7 +20,7 @@ export class SignupComponent implements OnInit {
     public router: Router
   ) {
     this.signupForm = this.fb.group({
-      name: [''],
+      name: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('[a-zA-Z]*')]],
       email: [''],
       password: ['']
     })
@@ -26,13 +28,20 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() { }
 
+
   registerUser() {
+    this.submitted = true;
+    if (this.signupForm.valid) {
+      this.submitted = false;
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
       if (res.result) {
         this.signupForm.reset()
-        this.router.navigate(['log-in']);
+        this.signupForm.disable()
+        this.success =true;
+        //this.router.navigate(['log-in']);
       }
     })
+  }
   }
 
 }
